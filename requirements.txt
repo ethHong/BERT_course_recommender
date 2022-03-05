@@ -1,0 +1,11 @@
+numpy
+streamlit==1.5.1
+torch==1.10.2
+watchdog
+transformers
+sentencepiece
+sentence-transformer
+pandas
+gensim
+sklearn
+stqdm
