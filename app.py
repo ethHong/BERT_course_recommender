@@ -14,15 +14,14 @@ from utils import (
 from ast import literal_eval
 from stqdm import stqdm
 
-with open("data/joblists.txt") as file:
+with open("joblists.txt") as file:
     lines = file.readlines()
     jobs = [line.rstrip() for line in lines]
 
-DB = pd.read_csv("data/JDs_final.csv").dropna()
-data = pd.read_csv("data/processed_courses_data.csv")
+DB = pd.read_csv("JDs_final.csv").dropna()
+data = pd.read_csv("processed_courses_data.csv")
 
 
-@st.cache
 def get_recommendation(DB, data, jobname, by="course_info"):
     JD_sentences = query_jds(DB, jobname).description.values
     DB["Query_Score"] = DB.description.progress_apply(
@@ -39,6 +38,11 @@ def get_recommendation(DB, data, jobname, by="course_info"):
 
 
 st.title("Course Recommender🤔")
+
+if device == "cpu":
+    processor = "🖥️"
+else:
+    processor = "💽"
 
 option = st.checkbox("💻From referece IT jobs?")
 if option:

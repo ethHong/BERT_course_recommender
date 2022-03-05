@@ -4,7 +4,7 @@ torch==1.10.2
 watchdog
 transformers
 sentencepiece
-sentence-transformer
+-U sentence-transformers
 pandas
 gensim
 sklearn
